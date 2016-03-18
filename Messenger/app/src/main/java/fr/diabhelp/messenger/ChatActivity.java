@@ -129,10 +129,12 @@ public class ChatActivity extends AppCompatActivity
 
         if (id == R.id.nav_profil) {
             intent = new Intent(this, ProfileActivity.class);
+            finish();
         } else if (id == R.id.nav_manage_chan) {
             intent = new Intent(this, ChannelActivity.class);
         } else if (id == R.id.nav_mail) {
             intent = new Intent(this, MailBoxActivity.class);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

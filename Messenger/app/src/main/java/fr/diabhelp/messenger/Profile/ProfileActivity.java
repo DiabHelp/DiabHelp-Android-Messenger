@@ -30,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent Carnetintent = new Intent(ProfileActivity.this, ChatActivity.class);
                 startActivity(Carnetintent);
+                finish();
             }
         });
 

@@ -28,6 +28,7 @@ public class MailBoxActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent Carnetintent = new Intent(MailBoxActivity.this, ChatActivity.class);
                 startActivity(Carnetintent);
+                finish();
             }
         });
 
