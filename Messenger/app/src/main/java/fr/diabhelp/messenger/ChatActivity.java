@@ -23,6 +23,8 @@ import fr.diabhelp.messenger.ChannelView.ChannelActivity;
 import fr.diabhelp.messenger.ChatView.ChatAdapter;
 import fr.diabhelp.messenger.ChatView.ChatMessage;
 import fr.diabhelp.messenger.ChatView.PagerAdapter;
+import fr.diabhelp.messenger.MailBox.MailBoxActivity;
+import fr.diabhelp.messenger.Profile.ProfileActivity;
 
 /**
  * Created by naqued on 14/03/16.
@@ -126,11 +128,11 @@ public class ChatActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profil) {
-                    // TODO Profil
+            intent = new Intent(this, ProfileActivity.class);
         } else if (id == R.id.nav_manage_chan) {
             intent = new Intent(this, ChannelActivity.class);
         } else if (id == R.id.nav_mail) {
-                // // TODO: 14/03/16 mail
+            intent = new Intent(this, MailBoxActivity.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
