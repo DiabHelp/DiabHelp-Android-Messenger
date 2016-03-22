@@ -2,8 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".Profile"
     android:orientation="vertical"
     >
@@ -18,64 +20,135 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/profile_img"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:src="@drawable/diab_logo_max"
+                    android:id="@+id/imageView"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:columnCount="2"
+                android:rowCount="4">
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editLastName"
+                    android:id="@+id/editName"
+                    android:hint="Name" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editBirthDate"
+                    android:id="@+id/editLastName"
+                    android:hint="Last Name" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editEmail"
+                    android:id="@+id/editBirthDate"
+                    android:hint="Birth Date" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editPhone"
+                    android:id="@+id/editEmail"
+                    android:hint="Email" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editOrganism"
+                    android:id="@+id/editPhone"
+                    android:hint="Phone" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editPassword"
+                    android:id="@+id/editOrganism"
+                    android:hint="Organism" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/editPassword2"
+                    android:id="@+id/editPassword"
+                    android:hint="Password" />
+
+                <EditText
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_rowSpan="1"
+                    android:layout_columnWeight="0.5"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:id="@+id/editPassword2"
+                    android:hint="Confirmation" />
+
+            </GridLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/profile_img">
-
-    </LinearLayout>
-    
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:rowCount="2"
-        android:columnCount="2">
-        <EditText
-            android:text="Name"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Last Name"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Birth Date"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Email"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Phone"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Organism"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Password"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-        <EditText
-            android:text="Password Confirmation"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="0.5"
-            />
-    </GridLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center|bottom"
         android:orientation="vertical"
         >
