@@ -1,11 +1,15 @@
 package fr.diabhelp.messenger.ChannelView;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import fr.diabhelp.messenger.R;
 
@@ -47,7 +51,7 @@ public class ChannelActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new AddAdapter(myDataset, R.drawable.ic_add_black_24dp);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -63,7 +67,7 @@ public class ChannelActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new AddAdapter(myDataset, R.drawable.ic_delete_black_24dp);
 
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -74,6 +78,15 @@ public class ChannelActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_faq, menu);
         return true;
     }*/
+
+    public void add_delete(View v) {
+        ImageButton tmp;
+        tmp = (ImageButton) v.findViewById(R.id.deleteButton);
+        if (tmp.getTag() == 'A')
+            Log.e("add_delete", "ADD");
+        else
+            Log.e("add_delete", "delete");
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

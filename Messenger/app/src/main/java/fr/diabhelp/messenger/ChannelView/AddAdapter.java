@@ -1,11 +1,11 @@
 package fr.diabhelp.messenger.ChannelView;
 
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import fr.diabhelp.messenger.R;
@@ -13,8 +13,9 @@ import fr.diabhelp.messenger.R;
 /**
  * Created by naqued on 17/03/16.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
     private String[] mDataset; // var créer car il n'y a que des textview, rajouter des imageview si jamais
+    private int mImg;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -22,9 +23,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView mTextView;
+        public ImageButton img;
         public ViewHolder(View v) {
             super(v);
             mTextView = (TextView) v.findViewById(R.id.info_text);
+            img = (ImageButton) v.findViewById(R.id.deleteButton);
+
 /*            v.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     TextView t = (TextView) v.findViewById(R.id.info_text);
@@ -37,19 +41,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
     }
+
+
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(String[] myDataset) {
+    public AddAdapter(String[] myDataset, int myImg) {
         mDataset = myDataset;
+        mImg = myImg;
     }
+
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public AddAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         final ViewGroup root = parent;
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view, parent, false);
+
         // set the view's size, margins, paddings and layout parameters
 //        ...
 /*        v.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +89,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset[position]);
-
+        holder.img.setImageResource(mImg);
+        if (mImg == R.drawable.ic_add_black_24dp)
+            holder.img.setTag('A');
+        else if (mImg == R.drawable.ic_delete_black_24dp)
+            holder.img.setTag('D');
     }
 
     // Return the size of your dataset (invoked by the layout manager)
