@@ -11,11 +11,16 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import de.tavendo.autobahn.WebSocketConnection;
+import de.tavendo.autobahn.WebSocketException;
+import de.tavendo.autobahn.WebSocketHandler;
 
 import java.util.ArrayList;
 
@@ -41,6 +46,39 @@ public class ChatActivity extends AppCompatActivity
     private ViewPager viewPager;
     private PagerAdapter mAdapter;
     private ActionBar actionBar;
+
+    private static final String TAG = "TEST";
+
+    private final WebSocketConnection mConnection = new WebSocketConnection();
+
+    private void startSocket() {
+
+        final String wsuri = "ws://192.168.1.6:3333";//127.0.2.2:8080
+
+        try {
+            mConnection.connect(wsuri, new WebSocketHandler() {
+
+                @Override
+                public void onOpen() {
+                    Log.d(TAG, "Status: Connected to " + wsuri);
+                    mConnection.sendTextMessage("Hello, world!");
+                }
+
+                @Override
+                public void onTextMessage(String payload) {
+                    Log.d(TAG, "Got echo: " + payload);
+                }
+
+                @Override
+                public void onClose(int code, String reason) {
+                    Log.d(TAG, "Connection lost : " + reason);
+                }
+            });
+        } catch (WebSocketException e) {
+
+            Log.d(TAG, e.toString());
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +124,9 @@ public class ChatActivity extends AppCompatActivity
 
             }
         });
+
+        startSocket();
+
     }
 
     @Override
@@ -142,4 +183,5 @@ public class ChatActivity extends AppCompatActivity
         startActivity(intent);
         return true;
     }
+
 }
